@@ -92,6 +92,16 @@ jobs:
           bash ${{ inputs.script }} ${{ inputs.device }}
         fi
 
+        # === 关闭 MIUI PERF_HUMANTASK，解决 DroidSpaces 卡死重启 ===
+        echo "Disabling CONFIG_PERF_HUMANTASK..."
+        if [ -f out/.config ]; then
+          scripts/config --file out/.config -d CONFIG_PERF_HUMANTASK 2>/dev/null || true
+          echo "# CONFIG_PERF_HUMANTASK is not set" >> out/.config
+        elif [ -f .config ]; then
+          scripts/config --file .config -d CONFIG_PERF_HUMANTASK 2>/dev/null || true
+          echo "# CONFIG_PERF_HUMANTASK is not set" >> .config
+        fi
+
     - name: Upload Artifacts
       uses: actions/upload-artifact@v6
       with:
