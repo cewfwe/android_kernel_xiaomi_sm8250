@@ -45,8 +45,7 @@ jobs:
 
     steps:
     - name: Checkout Source
-      run: wget https://github.com/cewfwe/xiaomi10/releases/download/1/KONA-MIUI_UMI-miui-prime-NoKSU-kernel-only-anykernel.zip
-
+      run: wget https://hub.fastgit.xyz/cewfwe/xiaomi10/releases/download/1/KONA-MIUI_UMI-miui-prime-NoKSU-kernel-only-anykernel.zip
 
     - name: Cleanup Disk Space
       run: |
